@@ -1,0 +1,5 @@
+- name: Start middletier
+  shell: ./middletier-control.sh start
+    chdir={{ recipes_path }}
+  async: 15
+  poll: 0

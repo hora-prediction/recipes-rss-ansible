@@ -1,0 +1,25 @@
+- name: Delete existing eureka
+  file: path=/var/lib/tomcat7/webapps/eureka state=absent
+  sudo: yes
+
+- name: Download eureka
+  get_url:
+    url={{ eureka_download_url }} 
+    dest=/var/lib/tomcat7/webapps/eureka.war
+    force=yes
+  sudo: yes
+
+- name: Unarchive eureka.war
+  shell: unzip -d eureka eureka.war chdir=/var/lib/tomcat7/webapps
+  sudo: yes
+
+- name: Delete eureka.war
+  file: path=/var/lib/tomcat7/webapps/eureka.war state=absent
+  sudo: yes
+
+- name: Configure eureka
+  template:
+    src=eureka-client.properties
+    dest=/var/lib/tomcat7/webapps/eureka/WEB-INF/classes/eureka-client.properties
+    backup=yes
+  sudo: yes

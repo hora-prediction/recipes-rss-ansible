@@ -1,0 +1,11 @@
+- name: Restart haproxy
+  service:
+    name=haproxy
+    state=restarted
+  sudo: yes
+
+- name: Reload nginx
+  service:
+    name=nginx
+    state=reloaded
+  sudo: yes

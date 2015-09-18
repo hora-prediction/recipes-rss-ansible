@@ -1,0 +1,21 @@
+- name: Start cassandra
+  service: name=cassandra state=started
+  sudo: yes
+
+#- name: Wait for cassandra to start
+#  wait_for:
+#    port={{ database_port }}
+#    delay=2
+#    state=started
+#
+#- name: Check if RSS keyspace exists
+#  shell: cqlsh -e "DESCRIBE KEYSPACES"
+#  register: db_ks
+#
+#- name: Copy create.cql
+#  copy: src=create.cql dest=/tmp/.
+#  when: db_ks.stdout.find('RSS') != 1
+#
+#- name: Create keyspace
+#  shell: cassandra-cli -f create.cql chdir=/tmp
+#  when: db_ks.stdout.find('RSS') != 1

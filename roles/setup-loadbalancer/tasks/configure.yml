@@ -1,0 +1,30 @@
+#- name: Enable haproxy service
+#  replace:
+#    dest='/etc/default/haproxy' 
+#    regexp='ENABLED=0'
+#    replace='ENABLED=1'
+#  sudo: yes
+#
+#- name: Configure haproxy.cfg
+#  template:
+#    src=haproxy.cfg
+#    dest=/etc/haproxy/haproxy.cfg
+#    owner=haproxy
+#    group=haproxy
+#    mode=0644
+#    backup=yes
+#  sudo: yes
+##  notify: Restart haproxy
+
+- name: Stop nginx before configuring
+  service:
+    name=nginx
+    state=stopped
+  sudo: yes
+
+- name: Configure nginx
+  template:
+    src=default.conf
+    dest=/etc/nginx/conf.d/default.conf
+    backup=yes
+  sudo: yes

@@ -1,0 +1,3 @@
+- name: Stop tomcat
+  service: name=tomcat7 state=stopped
+  sudo: yes

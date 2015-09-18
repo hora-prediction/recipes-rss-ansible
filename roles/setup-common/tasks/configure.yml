@@ -1,0 +1,4 @@
+# A work around to route network traffic through local link in emulab
+- name: Change hostname
+  hostname: name={{ ansible_hostname }}
+  sudo: yes

@@ -1,0 +1,19 @@
+#- name: Check and add haproxy debian repository
+#  apt_repository: repo='deb http://archive.ubuntu.com/ubuntu trusty-backports main universe' state=present
+#  sudo: yes
+#
+#- name: Check installed packages
+#  apt: name={{ item }} state=present
+#  with_items:
+#    - haproxy=1.5.*
+#  sudo: yes
+
+- name: Check and add nginx repository
+  apt_repository: repo='deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' state=present
+  sudo: yes
+
+- name: Check installed packages
+  apt: name={{ item }} state=present force=yes
+  with_items:
+    - nginx=1.9.*
+  sudo: yes

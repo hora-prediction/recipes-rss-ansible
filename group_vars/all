@@ -1,0 +1,17 @@
+haproxy_port: 80
+haproxy_webui_port: 1936
+nginx_port: 80
+
+edge_http_port: 9090
+
+middletier_http_port: 9191
+
+tomcat_port: 80
+
+eureka_download_url: http://central.maven.org/maven2/com/netflix/eureka/eureka-server/1.2.4/eureka-server-1.2.4.war
+
+database_port: 9160
+
+recipes_path: /tmp/recipes-rss
+
+log_path: /tmp/Results/

@@ -1,0 +1,3 @@
+- name: Start tomcat
+  service: name=tomcat7 state=started
+  sudo: yes

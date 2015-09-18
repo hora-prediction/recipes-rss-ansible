@@ -1,0 +1,3 @@
+- name: Stop cassandra
+  service: name=cassandra state=stopped
+  sudo: yes

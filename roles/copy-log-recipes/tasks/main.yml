@@ -1,0 +1,9 @@
+- name: List recipes log files
+  shell: find {{ recipes_path }}/logs/*
+  register: remote_file_paths
+
+- name: Copy recipes log files
+  fetch:
+    src={{ item }}
+    dest={{ log_path }}
+  with_items: remote_file_paths.stdout_lines

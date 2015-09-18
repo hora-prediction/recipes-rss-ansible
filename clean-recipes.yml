@@ -1,0 +1,16 @@
+- hosts: loadbalancer
+  roles:
+    - { role: clean-loadbalancer, tags: [ 'clean', 'loadbalancer' ] }
+
+- hosts: recipes
+  roles:
+    - { role: clean-recipes, tags: [ 'clean', 'recipes' ] }
+
+- hosts: tomcat
+  roles:
+    - { role: clean-tomcat, tags: [ 'clean', 'tomcat' ] }
+
+- hosts: database
+  roles:
+    - { role: clean-database, tags: [ 'clean', 'database' ] }
+

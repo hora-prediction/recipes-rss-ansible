@@ -1,0 +1,11 @@
+- name: List nginx log files
+  shell: find /var/log/nginx/*
+  register: remote_file_paths
+  sudo: yes
+
+- name: Copy nginx log files
+  fetch:
+    src={{ item }}
+    dest={{ log_path }}
+  with_items: remote_file_paths.stdout_lines
+  sudo: yes

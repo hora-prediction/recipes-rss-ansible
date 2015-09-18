@@ -1,0 +1,32 @@
+[loadbalancer]
+node1 ansible_ssh_host=node1.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+
+[edge]
+node2 ansible_ssh_host=node2.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+node3 ansible_ssh_host=node3.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+
+[middletier]
+node4 ansible_ssh_host=node4.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+node5 ansible_ssh_host=node5.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+node6 ansible_ssh_host=node6.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+
+[eureka]
+node7 ansible_ssh_host=node7.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+
+[database]
+node8 ansible_ssh_host=node8.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+
+[client]
+node9 ansible_ssh_host=node9.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+
+[rssserver]
+node10 ansible_ssh_host=node10.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+node11 ansible_ssh_host=node11.rssrecipes.rssperf.emulab.net ansible_ssh_user=tp
+
+[recipes:children]
+edge
+middletier
+
+[tomcat:children]
+eureka
+rssserver

@@ -1,0 +1,7 @@
+#- name: Start haproxy
+#  service: name=haproxy state=started
+#  sudo: yes
+
+- name: Start nginx
+  service: name=nginx state=started
+  sudo: yes

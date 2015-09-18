@@ -1,0 +1,7 @@
+- name: List recipes log files
+  shell: find {{ recipes_path }}/logs/*
+  register: remote_file_paths
+
+- name: Delete recipes log files
+  file: path={{ item }} state=absent
+  with_items: remote_file_paths.stdout_lines

@@ -1,0 +1,25 @@
+- name: Stop tomcat before configuring
+  service:
+    name=tomcat7
+    state=stopped
+  sudo: yes
+
+# TODO use replace
+- name: Copy server.xml to /etc/tomcat7/
+  copy: src=server.xml dest=/etc/tomcat7/ backup=yes
+  sudo: yes
+
+# TODO use replace
+- name: Copy tomcat7 to /etc/default/
+  copy: src=tomcat7 dest=/etc/default/ backup=yes
+  sudo: yes
+
+- name: Set autobind
+  file:
+    path=/etc/authbind/byport/80
+    state=touch
+    mode=0500
+    owner=tomcat7
+  sudo: yes
+
+#sudo update-rc.d tomcat disable

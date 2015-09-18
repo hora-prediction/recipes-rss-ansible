@@ -1,0 +1,5 @@
+- name: Check installed packages
+  apt: name={{ item }} state=present
+  with_items:
+    - tomcat7
+  sudo: yes

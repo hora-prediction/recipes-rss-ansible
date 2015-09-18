@@ -1,0 +1,27 @@
+- hosts: all
+  roles:
+    - { role: 'setup-common', tags: [ 'setup', 'common' ] }
+
+- hosts: loadbalancer
+  roles:
+    - { role: 'setup-loadbalancer', tags: [ 'setup', 'loadbalancer' ] }
+
+- hosts: recipes
+  roles:
+    - { role: 'setup-recipes', tags: [ 'setup', 'recipes' ] }
+
+- hosts: tomcat
+  roles:
+    - { role: 'setup-tomcat', tags: [ 'setup', 'tomcat' ] }
+
+- hosts: eureka
+  roles:
+    - { role: 'setup-eureka', tags: [ 'setup', 'eureka' ] }
+
+- hosts: rssserver
+  roles:
+    - { role: 'setup-rssserver', tags: [ 'setup', 'rssserver' ] }
+
+- hosts: database
+  roles:
+    - { role: 'setup-database', tags: [ 'setup', 'database' ] }

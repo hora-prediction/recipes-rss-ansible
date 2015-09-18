@@ -1,0 +1,3 @@
+- name: Copy RSS feeds to tomcat webapps
+  copy: src=feeds dest=/var/lib/tomcat7/webapps/ backup=yes
+  sudo: yes

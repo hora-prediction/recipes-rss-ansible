@@ -1,0 +1,7 @@
+#- name: Stop haproxy
+#  service: name=haproxy state=stopped
+#  sudo: yes
+
+- name: Stop nginx
+  service: name=nginx state=stopped
+  sudo: yes

@@ -1,0 +1,31 @@
+- name: Make sure that cassandra is running
+  service: name=cassandra state=started
+  sudo: yes
+
+- name: Wait for cassandra to start
+  wait_for:
+    port={{ database_port }}
+    delay=2
+    state=started
+
+- name: Check if RSS keyspace exists
+  shell: cqlsh -e "DESCRIBE KEYSPACES"
+  register: db_ks
+
+- name: Truncate keyspace
+  shell: cqlsh -e 'TRUNCATE "RSS"."Subscriptions"'
+  when: db_ks.stdout.find('RSS') == 1
+
+- name: Stop cassandra
+  service: name=cassandra state=stopped
+  sudo: yes
+
+- name: List cassandra log files
+  shell: find /var/log/cassandra/*
+  register: remote_file_paths
+  sudo: yes
+
+- name: Delete cassandra log files
+  file: path={{ item }} state=absent
+  with_items: remote_file_paths.stdout_lines
+  sudo: yes
