@@ -17,7 +17,7 @@
     backup=yes
 
 - name: Build RSS recipes
-  shell: ./gradlew clean build chdir={{ recipes_path }}
+  shell: gradle clean build -x check -x test chdir={{ recipes_path }}
   tags:
     - build
 
