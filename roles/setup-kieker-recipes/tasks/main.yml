@@ -1,0 +1,47 @@
+- name: Download kieker aspectj
+  get_url:
+    url={{ kieker_download_url }}
+    dest={{ recipes_path }}/kieker-{{ kieker_version }}-aspectj.jar
+    force=yes
+
+- name: Copy kieker properties file
+  copy:
+    src=kieker.monitoring.properties
+    dest={{ recipes_path }}/kieker.monitoring.properties
+
+- name: Ensure that META-INF directory exists in edge and middletier
+  file:
+    path={{ recipes_path }}/{{ item }}/src/main/resources/META-INF/
+    state=directory
+  with_items:
+    - rss-edge
+    - rss-middletier
+
+- name: Copy aop.xml to edge
+  copy:
+    src=aop-edge.xml
+    dest={{ recipes_path }}/rss-edge/src/main/resources/META-INF/aop.xml
+    backup=yes
+
+- name: Copy aop.xml to middletier
+  copy:
+    src=aop-middletier.xml
+    dest={{ recipes_path }}/rss-middletier/src/main/resources/META-INF/aop.xml
+    backup=yes
+
+- name: Re-build RSS recipes to include aop.xml
+  shell: gradle clean build -x check -x test chdir={{ recipes_path }}
+  tags:
+    - build
+
+- name: Copy edge-kieker control script
+  template:
+    src=edge-kieker-control.sh
+    dest={{ recipes_path }}
+    mode=0755
+
+- name: Copy middletier-kieker control script
+  template:
+    src=middletier-kieker-control.sh
+    dest={{ recipes_path }}
+    mode=0755

@@ -1,0 +1,19 @@
+- hosts: loadbalancer
+  roles:
+    - { role: stop-loadbalancer, tags: [ 'stop', 'loadbalancer' ] }
+
+- hosts: edge
+  roles:
+    - { role: stop-edge-kieker, tags: [ 'stop', 'edge' ] }
+
+- hosts: middletier
+  roles:
+    - { role: stop-middletier-kieker, tags: [ 'stop', 'middletier' ] }
+
+- hosts: tomcat
+  roles:
+    - { role: stop-tomcat, tags: [ 'stop', 'tomcat' ] }
+
+- hosts: database
+  roles:
+    - { role: stop-database, tags: [ 'stop', 'database' ] }

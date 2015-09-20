@@ -1,0 +1,2 @@
+- name: Delete kieker log
+  shell: rm -rf /tmp/kieker-*

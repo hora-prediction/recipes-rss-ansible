@@ -1,0 +1,5 @@
+- name: Stop edge
+  shell: ./edge-kieker-control.sh stop
+    chdir={{ recipes_path }}
+  async: 15
+  poll: 0

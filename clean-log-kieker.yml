@@ -1,0 +1,3 @@
+- hosts: recipes
+  roles:
+    - { role: clean-kieker, tags: [ 'clean', 'kieker' ] }
