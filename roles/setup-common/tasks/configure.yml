@@ -1,4 +1,5 @@
-# A work around to route network traffic through local link in emulab
-- name: Change hostname
+# A workaround to route network traffic through local links in emulab
+- name: Change hostname (a workaround for emulab)
   hostname: name={{ ansible_hostname }}
+  when: hardware_platform == 'emulab'
   sudo: yes
