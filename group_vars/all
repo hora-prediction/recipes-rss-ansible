@@ -1,21 +1,20 @@
+# General settings
+hardware_platform: emulab
+monitoring_framework: kieker
+log_path: /tmp/Results/
+
+# Settings for kieker
+kieker_version: 1.12-SNAPSHOT
+kieker_download_url: https://oss.sonatype.org/service/local/repositories/snapshots/content/net/kieker-monitoring/kieker/1.12-SNAPSHOT/kieker-1.12-20150918.004332-162-aspectj.jar
+kieker_binary_dir: /tmp
+
+# Settings for RSS recipes
+recipes_path: /tmp/recipes-rss
 haproxy_port: 80
 haproxy_webui_port: 1936
 nginx_port: 80
-
 edge_http_port: 9090
-
 middletier_http_port: 9191
-
 tomcat_port: 80
-
 eureka_download_url: http://central.maven.org/maven2/com/netflix/eureka/eureka-server/1.2.4/eureka-server-1.2.4.war
-
 database_port: 9160
-
-recipes_path: /tmp/recipes-rss
-
-log_path: /tmp/Results/
-
-kieker_version: 1.12-SNAPSHOT
-kieker_download_url: https://oss.sonatype.org/service/local/repositories/snapshots/content/net/kieker-monitoring/kieker/1.12-SNAPSHOT/kieker-1.12-20150918.004332-162-aspectj.jar
-kieker_dir: /tmp
