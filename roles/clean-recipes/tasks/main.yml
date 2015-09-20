@@ -1,7 +1,7 @@
 - name: Delete recipes log files
   file: path={{ item }} state=absent
   with_items:
-    - "{{ recipes_path }}/logs/rss-edge.log"
-    - "{{ recipes_path }}/logs/rss-middletier.log"
-    - "{{ recipes_path }}/logs/edge-control.log"
-    - "{{ recipes_path }}/logs/middletier-control.log"
+    - "{{ recipes_dir }}/logs/rss-edge.log"
+    - "{{ recipes_dir }}/logs/rss-middletier.log"
+    - "{{ recipes_dir }}/logs/edge-control.log"
+    - "{{ recipes_dir }}/logs/middletier-control.log"

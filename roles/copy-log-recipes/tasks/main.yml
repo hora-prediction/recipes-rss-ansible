@@ -1,5 +1,5 @@
 - name: List recipes log files
-  shell: find {{ recipes_path }}/logs/*
+  shell: find {{ recipes_dir }}/logs/*
   register: remote_file_paths
 
 - name: Copy recipes log files

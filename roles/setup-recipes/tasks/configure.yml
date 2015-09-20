@@ -1,37 +1,37 @@
 - name: Clone RSS recipes
   git:
     repo=https://github.com/teeratpitakrat/recipes-rss.git
-    dest={{ recipes_path }}
+    dest={{ recipes_dir }}
     update=no
 
 - name: Configure edge
   template:
     src=edge.properties
-    dest={{ recipes_path }}/rss-edge/src/main/resources/edge.properties
+    dest={{ recipes_dir }}/rss-edge/src/main/resources/edge.properties
     backup=yes
 
 - name: Configure middletier
   template:
     src=middletier.properties
-    dest={{ recipes_path }}/rss-middletier/src/main/resources/middletier.properties
+    dest={{ recipes_dir }}/rss-middletier/src/main/resources/middletier.properties
     backup=yes
 
 - name: Build RSS recipes
-  shell: gradle clean build -x check -x test chdir={{ recipes_path }}
+  shell: gradle clean build -x check -x test chdir={{ recipes_dir }}
   tags:
     - build
 
 - name: Create directory for recipes logs
-  file: path={{ recipes_path }}/logs state=directory
+  file: path={{ recipes_dir }}/logs state=directory
 
 - name: Copy edge control script
   copy:
     src=edge-control.sh
-    dest={{ recipes_path }}
+    dest={{ recipes_dir }}
     mode=0755
 
 - name: Copy middletier control script
   copy:
     src=middletier-control.sh
-    dest={{ recipes_path }}
+    dest={{ recipes_dir }}
     mode=0755

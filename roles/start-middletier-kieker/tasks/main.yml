@@ -1,5 +1,5 @@
 - name: Start middletier
   shell: ./middletier-kieker-control.sh start
-    chdir={{ recipes_path }}
+    chdir={{ recipes_dir }}
   async: 15
   poll: 0
