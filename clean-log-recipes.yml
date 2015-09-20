@@ -10,6 +10,7 @@
   roles:
     - { role: clean-tomcat, tags: [ 'clean', 'tomcat' ] }
 
+# Note: this also truncates the table in the database
 - hosts: database
   roles:
     - { role: clean-database, tags: [ 'clean', 'database' ] }
