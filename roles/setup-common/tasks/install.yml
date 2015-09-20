@@ -1,9 +1,3 @@
 - name: Update apt cache
   apt: update_cache=yes
   sudo: yes
-
-- name: Check installed packages
-  apt: name={{ item }} state=present
-  with_items:
-    - unzip
-  sudo: yes
