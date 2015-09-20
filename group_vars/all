@@ -15,3 +15,7 @@ database_port: 9160
 recipes_path: /tmp/recipes-rss
 
 log_path: /tmp/Results/
+
+kieker_version: 1.12-SNAPSHOT
+kieker_download_url: https://oss.sonatype.org/service/local/repositories/snapshots/content/net/kieker-monitoring/kieker/1.12-SNAPSHOT/kieker-1.12-20150918.004332-162-aspectj.jar
+kieker_dir: /tmp
