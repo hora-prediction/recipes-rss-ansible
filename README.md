@@ -1,7 +1,8 @@
 Prerequisites:
 - at least 6 virtual/physical nodes with
-- Debian-based Linux distribution (tested with Ubuntu 14.04.1 LTS) and
+- Ubuntu (tested with 14.04.1 LTS) and
 - ssh connection to all nodes (preferably with a key without passphrase)
+- ansible (tested with 1.9.3)
 
 Configuration:
 - create an ansible host file which specifies the host names and groups of the nodes
