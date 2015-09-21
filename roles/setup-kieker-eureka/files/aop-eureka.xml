@@ -1,0 +1,12 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.aspectj.org/dtd/aspectj_1_5_0.dtd">
+<aspectj>
+	<weaver options="">
+		<include within="com.sun.jersey.server.impl.application.WebApplicationImpl"/>
+		<include within="com.sun.jersey.spi.container.ContainerResponse"/>
+		<include within="com.sun.jersey.client.apache4.ApacheHttpClient4Handler"/>
+	</weaver>
+	<aspects>
+		<aspect name="kieker.monitoring.probe.aspectj.jersey.OperationExecutionJerseyClientInterceptor"/>
+		<aspect name="kieker.monitoring.probe.aspectj.jersey.OperationExecutionJerseyServerInterceptor"/>
+	</aspects>
+</aspectj>

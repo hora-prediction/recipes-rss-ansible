@@ -1,0 +1,27 @@
+- name: Copy catalina.sh to /usr/share/tomcat7/bin/.
+  copy:
+    src=catalina.sh
+    dest=/usr/share/tomcat7/bin/catalina.sh
+    mode=0755
+    backup=yes
+  sudo: yes
+
+- name: Download kieker aspectj to /usr/share/tomcat7/bin/.
+  get_url:
+    url={{ kieker_download_url }}
+    dest=/usr/share/tomcat7/bin/kieker-{{ kieker_version }}-aspectj.jar
+    force=yes
+  sudo: yes
+
+- name: Download kieker aspectj to /usr/share/tomcat7/lib/.
+  get_url:
+    url={{ kieker_download_url }}
+    dest=/usr/share/tomcat7/lib/kieker-{{ kieker_version }}-aspectj.jar
+    force=yes
+  sudo: yes
+
+- name: Copy kieker properties file
+  copy:
+    src=kieker.monitoring.properties
+    dest=/usr/share/tomcat7/bin/kieker.monitoring.properties
+  sudo: yes

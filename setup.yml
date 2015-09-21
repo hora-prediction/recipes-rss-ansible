@@ -38,8 +38,22 @@
 
 - hosts: eureka
   roles:
+    - { role: 'setup-kieker-tomcat',
+    tags: [ 'setup', 'tomcat', 'kieker' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+  }
+
+- hosts: eureka
+  roles:
     - { role: 'setup-eureka',
     tags: [ 'setup', 'eureka' ],
+  }
+
+- hosts: eureka
+  roles:
+    - { role: 'setup-kieker-eureka',
+    tags: [ 'setup', 'eureka', 'kieker' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
   }
 
 - hosts: rssserver
