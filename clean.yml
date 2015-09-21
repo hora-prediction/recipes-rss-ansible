@@ -1,0 +1,32 @@
+- hosts: loadbalancer
+  roles:
+    - { role: clean-loadbalancer,
+    tags: [ 'clean', 'loadbalancer' ],
+  }
+
+- hosts: recipes
+  roles:
+    - { role: clean-recipes,
+    tags: [ 'clean', 'recipes' ],
+  }
+
+- hosts: tomcat
+  roles:
+    - { role: clean-tomcat,
+    tags: [ 'clean', 'tomcat' ],
+  }
+
+# Note: this also truncates the table in the database
+- hosts: database
+  roles:
+    - { role: clean-database,
+    tags: [ 'clean', 'database' ],
+  }
+
+- hosts: all
+  roles:
+    - { role: clean-kieker,
+    tags: [ 'clean', 'kieker' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+  }
+

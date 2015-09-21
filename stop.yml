@@ -1,0 +1,51 @@
+- hosts: loadbalancer
+  roles:
+    - { role: stop-loadbalancer,
+    tags: [ 'stop', 'loadbalancer' ],
+  }
+
+- hosts: edge
+  roles:
+    - { role: stop-edge,
+    tags: [ 'stop', 'edge' ],
+    when: monitoring_framework is undefined,
+  }
+
+- hosts: middletier
+  roles:
+    - { role: stop-middletier,
+    tags: [ 'stop', 'middletier' ],
+    when: monitoring_framework is undefined,
+  }
+
+- hosts: edge
+  roles:
+    - { role: stop-edge-with-kieker,
+    tags: [ 'stop', 'edge' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+  }
+
+- hosts: middletier
+  roles:
+    - { role: stop-middletier-with-kieker,
+    tags: [ 'stop', 'middletier' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+  }
+
+- hosts: tomcat
+  roles:
+    - { role: stop-tomcat,
+    tags: [ 'stop', 'tomcat' ],
+  }
+
+- hosts: database
+  roles:
+    - { role: stop-database,
+    tags: [ 'stop', 'database' ],
+  }
+
+- hosts: all
+  roles:
+    - { role: stop-kieker-resource-monitor,
+    tags: [ 'stop', 'kieker' ],
+  }

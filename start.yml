@@ -1,0 +1,51 @@
+- hosts: all
+  roles:
+    - { role: start-kieker-resource-monitor,
+    tags: [ 'start', 'kieker' ],
+  }
+
+- hosts: database
+  roles:
+    - { role: start-database,
+    tags: [ 'start', 'database' ],
+  }
+
+- hosts: tomcat
+  roles:
+    - { role: start-tomcat,
+    tags: [ 'start', 'tomcat' ],
+  }
+
+- hosts: middletier
+  roles:
+    - { role: start-middletier,
+    tags: [ 'start', 'middletier' ],
+    when: monitoring_framework is undefined,
+  }
+
+- hosts: edge
+  roles:
+    - { role: start-edge,
+    tags: [ 'start', 'edge' ],
+    when: monitoring_framework is undefined,
+  }
+
+- hosts: middletier
+  roles:
+    - { role: start-middletier-with-kieker,
+    tags: [ 'start', 'middletier', 'kieker' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+  }
+
+- hosts: edge
+  roles:
+    - { role: start-edge-with-kieker,
+    tags: [ 'start', 'edge', 'kieker' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+  }
+
+- hosts: loadbalancer
+  roles:
+    - { role: start-loadbalancer,
+    tags: [ 'start', 'loadbalancer' ],
+  }

@@ -1,0 +1,55 @@
+- hosts: all
+  roles:
+    - { role: 'setup-common',
+    tags: [ 'setup', 'common' ],
+  }
+
+- hosts: all
+  roles:
+    - { role: 'setup-kieker-resource-monitor',
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+    tags: [ 'setup', 'kieker' ],
+  }
+
+- hosts: loadbalancer
+  roles:
+    - { role: 'setup-loadbalancer',
+    tags: [ 'setup', 'loadbalancer' ],
+  }
+
+- hosts: recipes
+  roles:
+    - { role: 'setup-recipes',
+    tags: [ 'setup', 'recipes' ],
+  }
+
+- hosts: recipes
+  roles:
+    - { role: 'setup-kieker-recipes',
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+    tags: [ 'setup', 'recipes', 'kieker' ],
+  }
+
+- hosts: tomcat
+  roles:
+    - { role: 'setup-tomcat',
+    tags: [ 'setup', 'tomcat' ],
+  }
+
+- hosts: eureka
+  roles:
+    - { role: 'setup-eureka',
+    tags: [ 'setup', 'eureka' ],
+  }
+
+- hosts: rssserver
+  roles:
+    - { role: 'setup-rssserver',
+    tags: [ 'setup', 'rssserver' ],
+  }
+
+- hosts: database
+  roles:
+    - { role: 'setup-database',
+    tags: [ 'setup', 'database' ],
+  }

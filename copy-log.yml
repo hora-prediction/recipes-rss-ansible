@@ -1,0 +1,30 @@
+- hosts: loadbalancer
+  roles:
+    - { role: copy-log-loadbalancer,
+    tags: [ 'copy-log', 'loadbalancer' ],
+  }
+
+- hosts: recipes
+  roles:
+    - { role: copy-log-recipes,
+    tags: [ 'copy-log', 'recipes' ],
+  }
+
+- hosts: tomcat
+  roles:
+    - { role: copy-log-tomcat,
+    tags: [ 'copy-log', 'tomcat' ],
+  }
+
+- hosts: database
+  roles:
+    - { role: copy-log-database,
+    tags: [ 'copy-log', 'database' ],
+  }
+
+- hosts: all
+  roles:
+    - { role: copy-log-kieker,
+    tags: [ 'copy-log', 'kieker' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
+  }
