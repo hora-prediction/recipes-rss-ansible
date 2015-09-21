@@ -23,9 +23,7 @@ if [ $1 = "start" ]; then
 		echowithdate "If it is not running, delete edge-control.pid manually"
 		#exit 1
 	fi
-	#java -jar rss-edge/build/libs/rss-edge-*SNAPSHOT.jar &
-	#java -javaagent:kieker-{{ kieker_version }}-aspectj.jar -Dkieker.monitoring.configuration=kieker.monitoring.properties -cp sigar-1.6.4.jar:rss-edge/build/libs/rss-edge-0.1.0-SNAPSHOT.jar com.netflix.recipes.rss.server.EdgeServer &
-	java -javaagent:kieker-{{ kieker_version }}-aspectj.jar -Dkieker.monitoring.configuration=kieker.monitoring.properties -cp rss-edge/build/libs/rss-edge-0.1.0-SNAPSHOT.jar com.netflix.recipes.rss.server.EdgeServer &
+	java -javaagent:kieker-{{ kieker_version }}-aspectj.jar -Dkieker.monitoring.configuration=kieker.monitoring.properties -Dkieker.monitoring.skipDefaultAOPConfiguration=true -cp rss-edge/build/libs/rss-edge-0.1.0-SNAPSHOT.jar com.netflix.recipes.rss.server.EdgeServer &
 	PID=$!
 	echo $PID > edge-control.pid
 	echowithdate "pid = $PID"

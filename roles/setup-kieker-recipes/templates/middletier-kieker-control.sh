@@ -23,8 +23,7 @@ if [ $1 = "start" ]; then
 		echowithdate "If it is not running, delete middletier-control.pid manually"
 		#exit 1
 	fi
-	#java -jar rss-middletier/build/libs/rss-middletier-*SNAPSHOT.jar &
-	java -javaagent:kieker-{{ kieker_version }}-aspectj.jar -Dkieker.monitoring.configuration=kieker.monitoring.properties -cp rss-middletier/build/libs/rss-middletier-0.1.0-SNAPSHOT.jar com.netflix.recipes.rss.server.MiddleTierServer &
+	java -javaagent:kieker-{{ kieker_version }}-aspectj.jar -Dkieker.monitoring.configuration=kieker.monitoring.properties -Dkieker.monitoring.skipDefaultAOPConfiguration=true -cp rss-middletier/build/libs/rss-middletier-0.1.0-SNAPSHOT.jar com.netflix.recipes.rss.server.MiddleTierServer &
 	PID=$!
 	echo $PID > middletier-control.pid
 	echowithdate "pid = $PID"
