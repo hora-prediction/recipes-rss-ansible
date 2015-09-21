@@ -4,11 +4,11 @@
 
 - hosts: edge
   roles:
-    - { role: stop-edge-kieker, tags: [ 'stop', 'edge' ] }
+    - { role: stop-edge-with-kieker, tags: [ 'stop', 'edge' ] }
 
 - hosts: middletier
   roles:
-    - { role: stop-middletier-kieker, tags: [ 'stop', 'middletier' ] }
+    - { role: stop-middletier-with-kieker, tags: [ 'stop', 'middletier' ] }
 
 - hosts: tomcat
   roles:
