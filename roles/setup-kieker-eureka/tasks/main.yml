@@ -2,14 +2,6 @@
   file: path=/var/lib/tomcat7/webapps/eureka/WEB-INF/classes/META-INF/ state=directory
   sudo: yes
 
-- name: Download kieker aspectj to eureka/WEB-INF/lib/.
-  get_url:
-    url={{ kieker_download_url }}
-    dest=/var/lib/tomcat7/webapps/eureka/WEB-INF/lib/kieker-{{ kieker_version }}-aspectj.jar
-    force=yes
-  sudo: yes
-  sudo: yes
-
 - name: Copy aop.xml to eureka
   copy:
     src=aop-eureka.xml
@@ -17,44 +9,51 @@
     backup=yes
   sudo: yes
 
-- name: Download jersey-server
+- name: Download kieker aspectj to eureka/WEB-INF/lib/.
   get_url:
-    url=http://central.maven.org/maven2/com/sun/jersey/jersey-server/1.19/jersey-server-1.19.jar
-    dest=/usr/share/tomcat7/lib/jersey-server-1.19.jar
+    url={{ kieker_download_url }}
+    dest=/var/lib/tomcat7/webapps/eureka/WEB-INF/lib/kieker-{{ kieker_version }}-aspectj.jar
     force=yes
   sudo: yes
 
-- name: Download jersey-client
-  get_url:
-    url=http://central.maven.org/maven2/com/sun/jersey/jersey-client/1.19/jersey-client-1.19.jar
-    dest=/usr/share/tomcat7/lib/jersey-client-1.19.jar
-    force=yes
-  sudo: yes
-
-- name: Download jersey-core
-  get_url:
-    url=http://central.maven.org/maven2/com/sun/jersey/jersey-core/1.19/jersey-core-1.19.jar
-    dest=/usr/share/tomcat7/lib/jersey-core-1.19.jar
-    force=yes
-  sudo: yes
-
-- name: Download jersey-servlet
-  get_url:
-    url=http://central.maven.org/maven2/com/sun/jersey/jersey-servlet/1.19/jersey-servlet-1.19.jar
-    dest=/usr/share/tomcat7/lib/jersey-servlet-1.19.jar
-    force=yes
-  sudo: yes
-
-- name: Download jersey-apache-client4
-  get_url:
-    url=http://central.maven.org/maven2/com/sun/jersey/contribs/jersey-apache-client4/1.19/jersey-apache-client4-1.19.jar
-    dest=/usr/share/tomcat7/lib/jersey-apache-client4-1.19.jar
-    force=yes
-  sudo: yes
-
-- name: Download jsr311
-  get_url:
-    url=http://central.maven.org/maven2/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar
-    dest=/usr/share/tomcat7/lib/jsr311-api-1.1.1.jar
-    force=yes
-  sudo: yes
+#- name: Download jersey-server
+#  get_url:
+#    url=http://central.maven.org/maven2/com/sun/jersey/jersey-server/1.19/jersey-server-1.19.jar
+#    dest=/usr/share/tomcat7/lib/jersey-server-1.19.jar
+#    force=yes
+#  sudo: yes
+#
+#- name: Download jersey-client
+#  get_url:
+#    url=http://central.maven.org/maven2/com/sun/jersey/jersey-client/1.19/jersey-client-1.19.jar
+#    dest=/usr/share/tomcat7/lib/jersey-client-1.19.jar
+#    force=yes
+#  sudo: yes
+#
+#- name: Download jersey-core
+#  get_url:
+#    url=http://central.maven.org/maven2/com/sun/jersey/jersey-core/1.19/jersey-core-1.19.jar
+#    dest=/usr/share/tomcat7/lib/jersey-core-1.19.jar
+#    force=yes
+#  sudo: yes
+#
+#- name: Download jersey-servlet
+#  get_url:
+#    url=http://central.maven.org/maven2/com/sun/jersey/jersey-servlet/1.19/jersey-servlet-1.19.jar
+#    dest=/usr/share/tomcat7/lib/jersey-servlet-1.19.jar
+#    force=yes
+#  sudo: yes
+#
+#- name: Download jersey-apache-client4
+#  get_url:
+#    url=http://central.maven.org/maven2/com/sun/jersey/contribs/jersey-apache-client4/1.19/jersey-apache-client4-1.19.jar
+#    dest=/usr/share/tomcat7/lib/jersey-apache-client4-1.19.jar
+#    force=yes
+#  sudo: yes
+#
+#- name: Download jsr311
+#  get_url:
+#    url=http://central.maven.org/maven2/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar
+#    dest=/usr/share/tomcat7/lib/jsr311-api-1.1.1.jar
+#    force=yes
+#  sudo: yes
