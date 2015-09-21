@@ -1,2 +1,3 @@
+# TODO: delete only log dir - not kieker binary dir
 - name: Delete kieker log
-  shell: rm -rf /tmp/kieker-*
+  shell: rm -rf /tmp/kieker-20*
