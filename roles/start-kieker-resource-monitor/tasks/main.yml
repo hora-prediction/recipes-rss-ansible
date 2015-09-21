@@ -1,0 +1,5 @@
+- name: Start kieker resource monitoring
+  shell: ./kieker-resource-monitor-control.sh start
+    chdir={{ kieker_binary_release_dir }}
+  async: 15
+  poll: 0

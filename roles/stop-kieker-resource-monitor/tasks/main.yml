@@ -1,0 +1,5 @@
+- name: Stop kieker resource monitoring
+  shell: kieker-resource-monitor-control.sh stop
+    chdir={{ kieker_binary_release_dir }}
+  async: 15
+  poll: 0

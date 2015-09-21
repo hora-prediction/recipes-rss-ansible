@@ -1,0 +1,36 @@
+- name: Check installed packages
+  apt: name={{ item }} state=present force=yes update_cache=yes
+  with_items:
+    - openjdk-7-jre
+  sudo: yes
+
+- name: Download kieker binary
+  get_url:
+    url={{ kieker_binary_release_download_url }}
+    dest=/tmp/kieker-{{ kieker_version }}-binary.zip
+    force=no
+
+#- name: Ensure that {{ kieker_binary_release_dir }} exists
+#  file: path={{ kieker_binary_release_dir }} state=directory
+
+- name: Unarchive kieker binary
+  unarchive:
+    src=/tmp/kieker-{{ kieker_version }}-binary.zip
+    dest=/tmp
+    copy=no
+
+## A workaround to extract into the dir defined in var
+#- name: Unarchive kieker binary
+#  shell: unzip kieker-{{ kieker_version }}-binary.zip
+#    chdir=/tmp
+
+- name: Copy kieker properties file
+  copy:
+    src=kieker.monitoring.properties
+    dest={{ kieker_binary_release_dir }}/kieker.monitoring.properties
+
+- name: Copy kieker resource monitor control script
+  copy:
+    src=kieker-resource-monitor-control.sh
+    dest={{ kieker_binary_release_dir }}/kieker-resource-monitor-control.sh
+    mode=0755
