@@ -14,7 +14,8 @@
   copy: src=tomcat7 dest=/etc/default/ backup=yes
   sudo: yes
 
-- name: Set autobind
+# TODO: use var for port number
+- name: Set authbind
   file:
     path=/etc/authbind/byport/80
     state=touch
