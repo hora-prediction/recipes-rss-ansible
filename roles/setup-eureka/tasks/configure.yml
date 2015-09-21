@@ -6,7 +6,7 @@
   get_url:
     url={{ eureka_download_url }} 
     dest=/var/lib/tomcat7/webapps/eureka.war
-    force=yes
+    force=no
   sudo: yes
 
 - name: Unarchive eureka.war
