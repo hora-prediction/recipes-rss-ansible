@@ -1,5 +1,5 @@
 - name: List kieker log directories
-  shell: find /tmp/kieker-*
+  shell: find /tmp/kieker-20* -type f
   register: remote_file_paths
   sudo: yes
 
