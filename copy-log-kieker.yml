@@ -1,3 +1,0 @@
-- hosts: recipes
-  roles:
-    - { role: copy-log-kieker, tags: [ 'copy-log', 'kieker' ] }

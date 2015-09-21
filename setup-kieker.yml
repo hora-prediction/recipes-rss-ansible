@@ -1,3 +1,0 @@
-- hosts: recipes
-  roles:
-    - { role: 'setup-kieker-recipes', tags: [ 'setup', 'kieker', 'recipes' ] }
