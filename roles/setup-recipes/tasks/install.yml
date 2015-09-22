@@ -5,3 +5,5 @@
     - git
     - gradle
   sudo: yes
+  register: result
+  changed_when: "'Unpacking' in result.stdout"
