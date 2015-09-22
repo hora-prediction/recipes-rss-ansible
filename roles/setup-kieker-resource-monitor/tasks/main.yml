@@ -4,25 +4,23 @@
     - openjdk-7-jre
   sudo: yes
 
+- name: Check if kieker binary release directory exists
+  stat: path={{ kieker_binary_release_dir }}
+  register: kieker_binary_release
+
 - name: Download kieker binary
   get_url:
     url={{ kieker_binary_release_download_url }}
     dest=/tmp/kieker-{{ kieker_version }}-binary.zip
     force=no
-
-#- name: Ensure that {{ kieker_binary_release_dir }} exists
-#  file: path={{ kieker_binary_release_dir }} state=directory
+  when: kieker_binary_release.stat.exists == false
 
 - name: Unarchive kieker binary
   unarchive:
     src=/tmp/kieker-{{ kieker_version }}-binary.zip
-    dest=/tmp
+    dest={{ kieker_binary_release_parent_dir }}
     copy=no
-
-## A workaround to extract into the dir defined in var
-#- name: Unarchive kieker binary
-#  shell: unzip kieker-{{ kieker_version }}-binary.zip
-#    chdir=/tmp
+  when: kieker_binary_release.stat.exists == false
 
 - name: Copy kieker properties file
   copy:
