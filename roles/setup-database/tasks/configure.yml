@@ -11,6 +11,7 @@
 - name: Check if RSS keyspace exists
   shell: cqlsh -e "DESCRIBE KEYSPACES"
   register: db_ks
+  changed_when: false
 
 - name: Copy create.cql
   copy: src=create.cql dest=/tmp/create.cql
