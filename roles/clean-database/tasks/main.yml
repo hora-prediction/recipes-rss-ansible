@@ -20,12 +20,7 @@
   service: name=cassandra state=stopped
   sudo: yes
 
-- name: List cassandra log files
-  shell: find /var/log/cassandra/*
-  register: remote_file_paths
-  sudo: yes
-
 - name: Delete cassandra log files
-  file: path={{ item }} state=absent
-  with_items: remote_file_paths.stdout_lines
+  shell: rm -rf /var/log/cassandra/*
   sudo: yes
+  ignore_errors: yes

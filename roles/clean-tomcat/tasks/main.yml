@@ -1,9 +1,4 @@
-- name: List tomcat log files
-  shell: find /var/log/tomcat7/*
-  register: remote_file_paths
-  sudo: yes
-
 - name: Delete tomcat log files
-  file: path={{ item }} state=absent
-  with_items: remote_file_paths.stdout_lines
+  shell: rm -rf /var/log/tomcat7/*
   sudo: yes
+  ignore_errors: yes
