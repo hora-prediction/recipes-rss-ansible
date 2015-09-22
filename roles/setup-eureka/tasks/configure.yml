@@ -1,5 +1,6 @@
-- name: Delete existing eureka
-  file: path=/var/lib/tomcat7/webapps/eureka state=absent
+- name: Check existing eureka directory
+  stat: path=/var/lib/tomcat7/webapps/eureka
+  register: eureka_dir
   sudo: yes
 
 - name: Download eureka
@@ -7,10 +8,12 @@
     url={{ eureka_download_url }} 
     dest=/var/lib/tomcat7/webapps/eureka.war
     force=no
+  when: eureka_dir.stat.exists == false
   sudo: yes
 
 - name: Unarchive eureka.war
   shell: unzip -d eureka eureka.war chdir=/var/lib/tomcat7/webapps
+  when: eureka_dir.stat.exists == false
   sudo: yes
 
 - name: Delete eureka.war
