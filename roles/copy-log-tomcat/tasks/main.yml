@@ -2,10 +2,12 @@
   shell: find /var/log/tomcat7/*
   register: remote_file_paths
   sudo: yes
+  ignore_errors: yes
 
 - name: Copy tomcat log files
   fetch:
     src={{ item }}
     dest={{ log_path }}
   with_items: remote_file_paths.stdout_lines
+  when: remote_file_paths.rc == 0
   sudo: yes

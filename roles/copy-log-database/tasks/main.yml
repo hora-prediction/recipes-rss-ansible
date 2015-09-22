@@ -2,10 +2,12 @@
   shell: find /var/log/cassandra/*
   register: remote_file_paths
   sudo: yes
+  ignore_errors: yes
 
 - name: Copy cassandra log files
   fetch:
     src={{ item }}
     dest={{ log_path }}
   with_items: remote_file_paths.stdout_lines
+  when: remote_file_paths.rc == 0
   sudo: yes
