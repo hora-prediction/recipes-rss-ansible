@@ -11,7 +11,7 @@
 
 - name: Ensure that META-INF directory exists in edge and middletier
   file:
-    path={{ recipes_dir }}/{{ item }}/src/main/resources/META-INF/
+    path={{ recipes_dir }}/{{ item }}/build/libs/META-INF/
     state=directory
   with_items:
     - rss-edge
@@ -20,19 +20,20 @@
 - name: Copy aop.xml to edge
   copy:
     src=aop-edge.xml
-    dest={{ recipes_dir }}/rss-edge/src/main/resources/META-INF/aop.xml
-    backup=yes
+    dest={{ recipes_dir }}/rss-edge/build/libs/META-INF/aop.xml
+
+- name: Update edge jar with aop.xml
+  shell: zip -r rss-edge-0.1.0-SNAPSHOT.jar META-INF
+    chdir={{ recipes_dir }}/rss-edge/build/libs/
 
 - name: Copy aop.xml to middletier
   copy:
     src=aop-middletier.xml
-    dest={{ recipes_dir }}/rss-middletier/src/main/resources/META-INF/aop.xml
-    backup=yes
+    dest={{ recipes_dir }}/rss-middletier/build/libs/META-INF/aop.xml
 
-- name: Re-build RSS recipes to include aop.xml
-  shell: gradle clean build -x check -x test chdir={{ recipes_dir }}
-  tags:
-    - build
+- name: Update middletier jar with aop.xml
+  shell: zip -r rss-middletier-0.1.0-SNAPSHOT.jar META-INF
+    chdir={{ recipes_dir }}/rss-middletier/build/libs/
 
 - name: Copy edge-kieker control script
   template:
