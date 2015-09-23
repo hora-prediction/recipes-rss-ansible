@@ -2,6 +2,7 @@
   roles:
     - { role: start-kieker-resource-monitor,
     tags: [ 'start', 'kieker' ],
+    when: monitoring_framework is defined and monitoring_framework == 'kieker',
   }
 
 - hosts: database
