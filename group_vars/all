@@ -5,7 +5,7 @@ log_path: /tmp/Results/
 
 # Settings for kieker
 kieker_version: 1.12-SNAPSHOT
-kieker_download_url: https://oss.sonatype.org/service/local/repositories/snapshots/content/net/kieker-monitoring/kieker/1.12-SNAPSHOT/kieker-1.12-20150920.004753-164-aspectj.jar
+kieker_download_url: http://kieker.uni-kiel.de/jenkins/job/kieker-nightly-release/lastSuccessfulBuild/artifact/build/libs/kieker-1.12-SNAPSHOT-aspectj.jar
 kieker_binary_release_download_url: http://build.kieker-monitoring.net/job/kieker-nightly-release/lastSuccessfulBuild/artifact/build/distributions/kieker-1.12-SNAPSHOT-binaries.zip
 kieker_binary_release_parent_dir: /tmp/
 kieker_binary_release_dir: "{{ kieker_binary_release_parent_dir }}/kieker-{{ kieker_version }}"
