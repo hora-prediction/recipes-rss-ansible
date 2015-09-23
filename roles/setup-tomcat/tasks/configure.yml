@@ -16,18 +16,16 @@
 
 - name: Set authbind
   file:
-    path=/etc/authbind/byport/{{ tomcat_port }}
+    path=/etc/authbind/byport/80
     state=touch
     mode=0500
     owner=tomcat7
   sudo: yes
 
-- name: Make sure that log directory exists
-  file: path=/var/log/tomcat7
-    state=directory
-    owner=tomcat7
-    group=tomcat7
-    mode=0644
-  sudo: yes
-
-#sudo update-rc.d tomcat disable
+#- name: Make sure that log directory exists
+#  file: path=/var/log/tomcat7
+#    state=directory
+#    owner=tomcat7
+#    group=tomcat7
+#    mode=0644
+#  sudo: yes
