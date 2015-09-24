@@ -7,6 +7,7 @@
   with_items:
     - { key: 'pgp.mit.edu', id: 'F758CE318D77295D' }
     - { key: 'pgp.mit.edu', id: '2B5C1B00' }
+    - { key: 'pgp.mit.edu', id: '0353B12C' }
   sudo: yes
 
 - name: Check installed packages
