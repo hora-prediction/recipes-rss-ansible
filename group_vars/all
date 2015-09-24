@@ -1,5 +1,5 @@
 # General settings
-hardware_platform: emulab
+#hardware_platform: emulab
 monitoring_framework: kieker
 log_path: /tmp/Results/
 
