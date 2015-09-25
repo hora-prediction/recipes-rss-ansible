@@ -1,7 +1,7 @@
 # General settings
 change_hostname: yes
 monitoring_framework: kieker
-log_path: /tmp/Results/
+log_path: /tmp/RSSRecipesLog/
 
 # Settings for kieker
 kieker_version: 1.12-SNAPSHOT
