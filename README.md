@@ -14,9 +14,9 @@ ansible-playbook -i <host-file> <playbook>.yml
 ```
 Example
 ```
-ansible-playbook -i hosts-emulab setup.yml
-ansible-playbook -i hosts-emulab start.yml
-ansible-playbook -i hosts-emulab stop.yml
-ansible-playbook -i hosts-emulab copy-log.yml
-ansible-playbook -i hosts-emulab clean.yml
+ansible-playbook -i hosts setup.yml
+ansible-playbook -i hosts start.yml
+ansible-playbook -i hosts stop.yml
+ansible-playbook -i hosts copy-log.yml
+ansible-playbook -i hosts clean.yml
 ```
