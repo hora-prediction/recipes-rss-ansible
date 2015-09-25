@@ -1,5 +1,5 @@
 # A workaround to route network traffic through local links in emulab
-- name: Change hostname (a workaround for emulab)
+- name: Change hostname from FQDN to short name
   hostname: name={{ inventory_hostname }}
-  when: hardware_platform is defined and hardware_platform == 'emulab'
+  when: change_hostname is defined and change_hostname == 'yes'
   sudo: yes
