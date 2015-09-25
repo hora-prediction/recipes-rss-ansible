@@ -1,0 +1,31 @@
+[loadbalancer]
+node1 ansible_ssh_host=node1.hostname.or.ip.address ansible_ssh_user=ssh_username
+
+[edge]
+node2 ansible_ssh_host=node2.hostname.or.ip.address ansible_ssh_user=ssh_username
+node3 ansible_ssh_host=node3.hostname.or.ip.address ansible_ssh_user=ssh_username
+
+[middletier]
+node4 ansible_ssh_host=node4.hostname.or.ip.address ansible_ssh_user=ssh_username
+node5 ansible_ssh_host=node5.hostname.or.ip.address ansible_ssh_user=ssh_username
+node6 ansible_ssh_host=node6.hostname.or.ip.address ansible_ssh_user=ssh_username
+
+[eureka]
+node7 ansible_ssh_host=node7.hostname.or.ip.address ansible_ssh_user=ssh_username
+
+[database]
+node8 ansible_ssh_host=node8.hostname.or.ip.address ansible_ssh_user=ssh_username
+
+[client]
+node9 ansible_ssh_host=node9.hostname.or.ip.address ansible_ssh_user=ssh_username
+
+[rssserver]
+node10 ansible_ssh_host=node10.hostname.or.ip.address ansible_ssh_user=ssh_username
+
+[recipes:children]
+edge
+middletier
+
+[tomcat:children]
+eureka
+rssserver
