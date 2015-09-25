@@ -1,5 +1,5 @@
 # General settings
-change_hostname: true
+use_short_hostname: true
 monitoring_framework: kieker
 log_path: /tmp/RSSRecipesLog/
 
