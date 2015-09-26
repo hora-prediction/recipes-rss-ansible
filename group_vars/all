@@ -1,5 +1,6 @@
 # General settings
 use_short_hostname: true
+generate_requests: true
 monitoring_framework: kieker
 log_path: /tmp/RSSRecipesLog/
 
@@ -20,3 +21,6 @@ middletier_http_port: 9191
 tomcat_port: 80
 eureka_download_url: http://central.maven.org/maven2/com/netflix/eureka/eureka-server/1.2.4/eureka-server-1.2.4.war
 database_port: 9160
+
+# Settings for JMeter
+jmeter_duration: 300

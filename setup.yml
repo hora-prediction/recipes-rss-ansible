@@ -67,3 +67,10 @@
     - { role: 'setup-database',
     tags: [ 'setup', 'database' ],
   }
+
+- hosts: client
+  roles:
+    - { role: 'setup-client',
+    tags: [ 'setup', 'client' ],
+    when: generate_requests is defined and generate_requests == true,
+  }

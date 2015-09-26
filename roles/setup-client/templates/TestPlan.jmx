@@ -87,7 +87,7 @@
         <longProp name="ThreadGroup.start_time">1379688775000</longProp>
         <longProp name="ThreadGroup.end_time">1379688383000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">7200</stringProp>
+		<stringProp name="ThreadGroup.duration">{{ jmeter_duration }}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
