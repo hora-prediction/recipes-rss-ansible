@@ -1,0 +1,5 @@
+- name: Copy TestPlan.jmx
+  template:
+    src=TestPlan.jmx
+    dest=/tmp/TestPlan.jmx
+    backup=yes
