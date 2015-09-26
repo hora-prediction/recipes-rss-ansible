@@ -15,7 +15,7 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">lb</stringProp>
+		<stringProp name="HTTPSampler.domain">{{ groups['loadbalancer'][0] }}</stringProp>
         <stringProp name="HTTPSampler.port">80</stringProp>
         <stringProp name="HTTPSampler.connect_timeout"></stringProp>
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -82,8 +82,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">150</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
+		<stringProp name="ThreadGroup.num_threads">{{ jmeter_num_threads }}</stringProp>
+		<stringProp name="ThreadGroup.ramp_time">{{ jmeter_ramp_time }}</stringProp>
         <longProp name="ThreadGroup.start_time">1379688775000</longProp>
         <longProp name="ThreadGroup.end_time">1379688383000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -130,7 +130,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="url" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/rss/cnn.xml</stringProp>
+				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/feeds/cnn.xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">url</stringProp>
@@ -199,7 +199,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="url" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/rss/bbc.xml</stringProp>
+				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/feeds/bbc.xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">url</stringProp>
@@ -268,7 +268,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="url" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/rss/dw.xml</stringProp>
+				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/feeds/dw.xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">url</stringProp>
@@ -337,7 +337,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="url" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/rss/spiegel.xml</stringProp>
+				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/feeds/spiegel.xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">url</stringProp>
@@ -406,7 +406,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="delFeedUrl" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/rss/cnn.xml</stringProp>
+				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/feeds/cnn.xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">delFeedUrl</stringProp>
@@ -475,7 +475,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="delFeedUrl" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/rss/bbc.xml</stringProp>
+				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/feeds/bbc.xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">delFeedUrl</stringProp>
@@ -544,7 +544,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="delFeedUrl" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/rss/dw.xml</stringProp>
+				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/feeds/dw.xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">delFeedUrl</stringProp>
@@ -613,7 +613,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="delFeedUrl" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/rss/spiegel.xml</stringProp>
+				<stringProp name="Argument.value">http://{{ groups['rssserver'][0] }}/feeds/spiegel.xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">delFeedUrl</stringProp>

@@ -23,4 +23,6 @@ eureka_download_url: http://central.maven.org/maven2/com/netflix/eureka/eureka-s
 database_port: 9160
 
 # Settings for JMeter
-jmeter_duration: 300
+jmeter_duration: 60
+jmeter_ramp_time: 10
+jmeter_num_threads: 10
