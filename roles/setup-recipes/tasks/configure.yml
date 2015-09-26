@@ -1,6 +1,6 @@
 - name: Clone RSS recipes
   git:
-    repo=https://github.com/teeratpitakrat/recipes-rss.git
+    repo=https://github.com/hora-prediction/recipes-rss.git
     dest={{ recipes_dir }}
     update=no
 
