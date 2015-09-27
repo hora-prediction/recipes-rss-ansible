@@ -13,7 +13,12 @@
   sudo: yes
 
 - name: Check installed packages
-  apt: name={{ item }} state=present force=yes
+  apt:
+    name={{ item }}
+    state=present
+    force=yes
+    update_cache=yes
+    cache_valid_time=3600
   with_items:
     - nginx=1.9.*
   sudo: yes
