@@ -1,4 +1,4 @@
 - name: Start JMeter
   shell: jmeter -n -t /tmp/TestPlan.jmx
-  async: 300
-  poll: 10
+  async: 21600
+  poll: 60
