@@ -24,6 +24,8 @@ This setup provides ansible playbooks to run Netflix's distributed RSS reader ap
 - ssh connection from control node to all nodes (preferably with a key without passphrase)
 - all nodes must be able to communication with each other by hostname
 
+The application can also run on one machine using VirtualBox. Please refer to https://github.com/hora-prediction/recipes-rss-vagrant-ansible for more information.
+
 ## Configuration
 - create an ansible host file ```hosts``` which specifies the hostnames and groups of the nodes
 - (optional) set parameters in ```group_vars/all```
@@ -31,8 +33,7 @@ This setup provides ansible playbooks to run Netflix's distributed RSS reader ap
 ## Instruction
 
 ### How to run RSS recipes
-Ansible playbooks can be executed by
-```ansible-playbook -i <host-file> <playbook>.yml```
+Ansible playbooks can be executed from the control node with ```ansible-playbook -i <host-file> <playbook>.yml```
 
 Example:
 - ```ansible-playbook -i hosts setup.yml``` installs the required packages on the nodes and sets up the RSS recipes including Kieker (if enabled in ```group_vars/all```)
