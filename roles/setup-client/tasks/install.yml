@@ -1,9 +1,20 @@
-- name: Check installed packages
-  apt:
-    name={{ item }}
-    state=present
-    update_cache=yes
-    cache_valid_time=3600
-  with_items:
-    - jmeter
-  sudo: yes
+- name: Check existing JMeter directory
+  stat: path=/tmp/apache-jmeter-2.13
+  register: jmeter_dir
+
+- name: Download JMeter binary
+  get_url:
+    url=http://mirror.softaculous.com/apache//jmeter/binaries/apache-jmeter-2.13.zip
+    dest=/tmp/apache-jmeter-2.13.zip
+    force=no
+  when: jmeter_dir.stat.exists == false
+
+- name: Unarchive JMeter
+  unarchive:
+    src=/tmp/apache-jmeter-2.13.zip
+    dest=/tmp/
+    copy=no
+  when: jmeter_dir.stat.exists == false
+
+- name: Change jmeter bin permission
+  file: path=/tmp/apache-jmeter-2.13/bin/jmeter mode=0755

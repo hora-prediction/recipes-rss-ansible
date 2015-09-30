@@ -1,0 +1,3 @@
+- name: Delete jmeter log files
+  shell: rm -rf /tmp/jmeter-log/*
+  ignore_errors: yes

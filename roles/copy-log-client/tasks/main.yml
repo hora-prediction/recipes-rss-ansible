@@ -1,0 +1,11 @@
+- name: List jmeter log files
+  shell: find /tmp/jmeter-log/*
+  register: remote_file_paths
+  ignore_errors: yes
+
+- name: Copy jmeter log files
+  fetch:
+    src={{ item }}
+    dest={{ log_path }}
+  with_items: remote_file_paths.stdout_lines
+  when: remote_file_paths.rc == 0
