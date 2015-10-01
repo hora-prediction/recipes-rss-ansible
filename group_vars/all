@@ -1,6 +1,6 @@
 # General settings
 monitoring_framework: kieker
-log_path: /tmp/RSSRecipesLog/
+copy_log_path: /tmp/RSSRecipesLog/
 use_short_hostname: false
 generate_requests: false
 

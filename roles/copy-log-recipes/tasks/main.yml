@@ -6,6 +6,6 @@
 - name: Copy recipes log files
   fetch:
     src={{ item }}
-    dest={{ log_path }}
+    dest={{ copy_log_path }}
   with_items: remote_file_paths.stdout_lines
   when: remote_file_paths.rc == 0
