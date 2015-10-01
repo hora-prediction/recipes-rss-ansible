@@ -1,8 +1,8 @@
 # General settings
-use_short_hostname: true
-generate_requests: true
 monitoring_framework: kieker
 log_path: /tmp/RSSRecipesLog/
+use_short_hostname: false
+generate_requests: false
 
 # Settings for kieker
 kieker_version: 1.12-SNAPSHOT
