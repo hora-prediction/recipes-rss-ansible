@@ -3,5 +3,5 @@
 
 - name: Start JMeter
   shell: ./tmp/apache-jmeter-2.13/bin/jmeter -n -t /tmp/TestPlan.jmx -l /tmp/jmeter-log/result.jtl -j /tmp/jmeter-log/jmeter.log
-  async: 21600
+  async: 86400
   poll: 60
