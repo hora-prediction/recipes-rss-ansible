@@ -25,10 +25,10 @@
 - name: Copy kieker properties file
   copy:
     src=kieker.monitoring.properties
-    dest={{ kieker_binary_release_dir }}/kieker.monitoring.properties
+    dest={{ kieker_binary_release_dir }}/bin/kieker.monitoring.properties
 
 - name: Copy kieker resource monitor control script
   copy:
     src=kieker-resource-monitor-control.sh
-    dest={{ kieker_binary_release_dir }}/kieker-resource-monitor-control.sh
+    dest={{ kieker_binary_release_dir }}/bin/kieker-resource-monitor-control.sh
     mode=0755

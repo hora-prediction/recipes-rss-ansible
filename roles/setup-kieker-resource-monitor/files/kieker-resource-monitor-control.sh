@@ -23,7 +23,10 @@ if [ $1 = "start" ]; then
 		echowithdate "If it is not running, delete kieker-resource-monitor-control.pid manually"
 		#exit 1
 	fi
-	./bin/resourceMonitor.sh &
+	BINDIR=$(cd "$(dirname "$0")"; pwd)/
+	JAVAARGS="-Dkieker.common.logging.Log=JDK -Dkieker.common.logging.Log=JDK -Djava.util.logging.config.file=${BINDIR}/logging.properties -Xms56m -Xmx1024m -Dkieker.monitoring.configuration=kieker.monitoring.properties"
+	MAINCLASSNAME=kieker.tools.resourceMonitor.ResourceMonitor
+java ${JAVAARGS} -cp "${BINDIR}/../lib/*":"${BINDIR}/../lib/sigar/*":"${BINDIR}/../build/libs/*":"${BINDIR}" ${MAINCLASSNAME} $*
 	PID=$!
 	echo $PID > kieker-resource-monitor-control.pid
 	echowithdate "pid = $PID"
