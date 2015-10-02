@@ -1,9 +1,10 @@
-- name: Copy catalina.sh to /usr/share/tomcat7/bin/.
-  copy:
-    src=catalina.sh
-    dest=/usr/share/tomcat7/bin/catalina.sh
-    mode=0755
-    backup=yes
+- name: Add java runtime options for kieker to setenv.sh
+  lineinfile:
+    dest=/usr/share/tomcat7/bin/setenv.sh
+    insertafter=EOF
+    line='CATALINA_OPTS="$CATALINA_OPTS -javaagent:/usr/share/tomcat7/bin/kieker-{{ kieker_version }}-aspectj.jar -Dkieker.monitoring.configuration=/usr/share/tomcat7/bin/kieker.monitoring.properties -Dkieker.monitoring.skipDefaultAOPConfiguration=true"'
+    state=present
+    create=yes
   sudo: yes
 
 - name: Download kieker aspectj to /usr/share/tomcat7/bin/.
