@@ -5,9 +5,9 @@ use_short_hostname: false
 generate_requests: false
 
 # Settings for kieker
-kieker_version: 1.12-SNAPSHOT
-kieker_download_url: http://kieker.uni-kiel.de/jenkins/job/kieker-nightly-release/lastSuccessfulBuild/artifact/build/libs/kieker-1.12-SNAPSHOT-aspectj.jar
-kieker_binary_release_download_url: http://build.kieker-monitoring.net/job/kieker-nightly-release/lastSuccessfulBuild/artifact/build/distributions/kieker-1.12-SNAPSHOT-binaries.zip
+kieker_version: 1.12
+kieker_download_url: http://search.maven.org/remotecontent?filepath=net/kieker-monitoring/kieker/1.12/kieker-1.12-aspectj.jar
+kieker_binary_release_download_url: http://netcologne.dl.sourceforge.net/project/kieker/kieker/kieker-1.12/kieker-1.12-binaries.zip
 kieker_binary_release_parent_dir: /tmp/
 kieker_binary_release_dir: "{{ kieker_binary_release_parent_dir }}/kieker-{{ kieker_version }}"
 kieker_monitoring_name: KIEKER
