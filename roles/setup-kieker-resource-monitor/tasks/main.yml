@@ -23,7 +23,7 @@
   when: kieker_binary_release.stat.exists == false
 
 - name: Copy kieker properties file
-  copy:
+  template:
     src=kieker.monitoring.properties
     dest={{ kieker_binary_release_dir }}/bin/kieker.monitoring.properties
 

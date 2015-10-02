@@ -5,7 +5,7 @@
     force=yes
 
 - name: Copy kieker properties file
-  copy:
+  template:
     src=kieker.monitoring.properties
     dest={{ recipes_dir }}/kieker.monitoring.properties
 

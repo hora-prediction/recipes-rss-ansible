@@ -7,6 +7,7 @@
 - hosts: all
   roles:
     - { role: 'setup-kieker-resource-monitor',
+    kieker_monitoring_name: KIEKER-RESOURCE-MONITOR,
     when: monitoring_framework is defined and monitoring_framework == 'kieker',
     tags: [ 'setup', 'kieker' ],
   }
@@ -26,6 +27,7 @@
 - hosts: recipes
   roles:
     - { role: 'setup-kieker-recipes',
+    kieker_monitoring_name: KIEKER-INSTRUMENTATION,
     when: monitoring_framework is defined and monitoring_framework == 'kieker',
     tags: [ 'setup', 'recipes', 'kieker' ],
   }
@@ -39,6 +41,7 @@
 - hosts: eureka
   roles:
     - { role: 'setup-kieker-tomcat',
+    kieker_monitoring_name: KIEKER-INSTRUMENTATION,
     tags: [ 'setup', 'tomcat', 'kieker' ],
     when: monitoring_framework is defined and monitoring_framework == 'kieker',
   }
@@ -52,6 +55,7 @@
 - hosts: eureka
   roles:
     - { role: 'setup-kieker-eureka',
+    kieker_monitoring_name: KIEKER-INSTRUMENTATION,
     tags: [ 'setup', 'eureka', 'kieker' ],
     when: monitoring_framework is defined and monitoring_framework == 'kieker',
   }
